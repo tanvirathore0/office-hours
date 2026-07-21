@@ -5,15 +5,17 @@ import db from './database/index.js';
 import { detectMisconceptions } from './services/misconceptionDetector.js';
 import { generateExercise } from './services/exerciseGenerator.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-
-app.get('/', (_request, response) => {
-  response.json({ message: 'Office Hours API is running.' });
-});
 
 app.post('/submit', async (request, response) => {
   const { student_id: studentId, code_text: codeText, language = 'plaintext' } = request.body;
@@ -173,6 +175,13 @@ app.use((error, _request, response, _next) => {
   response.status(500).json({
     error: 'The submission could not be stored. Please try again.'
   });
+});
+
+// Serve the built React frontend
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(port, () => {
