@@ -26,7 +26,7 @@ const sampleClassPatterns = [{ misconception_type: 'Boundary reasoning', student
 function Logo() { return <button className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Office Hours home"><span className="logo-mark"><i /><i /><i /></span><span>office<span>hours</span></span></button>; }
 
 function Nav({ setPage }) {
-  const links = [['Home', 'home'], ['How It Works', 'how'], ['Dashboard', 'dashboard'], ['Teacher View', 'teacher'], ['Docs', 'docs']];
+  const links = [['Home', 'home'], ['How It Works', 'how'], ['Dashboard', 'dashboard'], ['Teacher View', 'teacher']];
   function navigate(target) { if (target === 'how') { document.querySelector('#how-it-works')?.scrollIntoView({ behavior: 'smooth' }); return; } if (target === 'docs') { document.querySelector('#docs')?.scrollIntoView({ behavior: 'smooth' }); return; } setPage(target); }
   return <header className="spec-nav"><button className="oh-orb liquid-glass" onClick={() => setPage('home')}>OH</button><nav className="nav-glass liquid-glass">{links.map(([label, target]) => <button key={label} onClick={() => navigate(target)}>{label}</button>)}<button className="nav-start" onClick={() => setPage('submit')}>Get Started <ArrowUpRight size={15} /></button></nav><div className="nav-spacer" /></header>;
 }
