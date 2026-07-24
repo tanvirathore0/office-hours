@@ -41,8 +41,8 @@ Project built by Tanvi Rathore, a high school coding instructor who teaches Pyth
 - **Exercise generation:** GPT-5.6 is separately prompted with the detected misconception and the student's own code style, and generates a small, targeted practice exercise mimicking the student's naming conventions and formatting.
 
 ### Key decisions
-- We deliberately scoped detection to require *evidence of a pattern* (not a single isolated bug) — this was a specific instruction in the GPT-5.6 prompt design, since the whole premise of the product depends on distinguishing one-off mistakes from real conceptual gaps.
-- We chose to keep the exercise generator as a *separate* GPT-5.6 call from the detector, rather than one combined call, so each prompt could stay focused and produce more reliable structured output.
+- I scoped detection to require *evidence of a pattern* (not a single isolated bug) — this was a specific instruction in the GPT-5.6 prompt design, since the whole premise of the product depends on distinguishing one-off mistakes from real conceptual gaps.
+- I chose to keep the exercise generator as a *separate* GPT-5.6 call from the detector, rather than one combined call, so each prompt could stay focused and produce more reliable structured output.
 - Codex session used for the majority of core functionality: `019f7edf-dab1-7c20-91cd-3afccec74abd` (my codex ID)
 
 ## Setup instructions
